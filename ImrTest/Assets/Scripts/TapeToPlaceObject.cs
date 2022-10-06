@@ -1,52 +1,68 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class TapeToPlaceObject : MonoBehaviour
 {
-    public GameObject gameObjectToInstantiate;
+    [SerializeField]
+    private GameObject[] gameObjectsToInstantiate;
+
+    [SerializeField]
+    private UIController uIController;
 
     private GameObject spawnedObject;
     private ARRaycastManager aRRaycastManager;
     private Vector2 touchPosition;
 
+    private bool screenPressed;
+
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
-
-    bool TryGetTouchPosition(out Vector2 touchPosition)
-    {
-        if(Input.touchCount > 0)
-        {
-            touchPosition = Input.GetTouch(0).position;
-            return true;
-        }
-
-        touchPosition = default;
-        return false;
-    }
 
     void Awake()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();   
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (!TryGetTouchPosition(out Vector2 touchPosition))
-            return;
-
-        if(aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
+            screenPressed = false;
+            return;
+        }
+
+        if(aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon) && !screenPressed)
+        {
+            screenPressed = true;
+
             var hitPose = hits[0].pose;
 
-            Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+            int entityIndex = uIController.activeEntityIndex;
+
+            Instantiate(gameObjectsToInstantiate[entityIndex], hitPose.position, hitPose.rotation);
         }
+    }
+
+    bool TryGetTouchPosition(out Vector2 touchPosition)
+    {
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            if (Input.touches.Select(touch => touch.fingerId).Any(id => EventSystem.current.IsPointerOverGameObject(id)))
+            {
+                touchPosition = default;
+                return false;
+            }
+
+            touchPosition = Input.GetTouch(0).position;
+            return true;
+        }
+
+        touchPosition = default;
+        return false;
     }
 }
