@@ -1,1 +1,4 @@
-# IMR_Tudose_Pricop_Tudors_A2
+# Contributors:
+
+## Pricop Tudor-Constantin 3A2
+## Tudose Tudor-Cristian 3A2
