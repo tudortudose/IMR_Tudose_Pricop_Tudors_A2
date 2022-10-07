@@ -10,3 +10,8 @@
 ### Sounds: spawning, shooting, dying.
 
 ## Link for Youtube Video: https://youtube.com/shorts/PjqiL9ax5SE?feature=share
+
+# Contributors:
+
+## Pricop Tudor-Constantin 3A2
+## Tudose Tudor-Cristian 3A2
