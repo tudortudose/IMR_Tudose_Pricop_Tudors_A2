@@ -4,8 +4,8 @@
 
 ### Detecting the real world surfaces;
 ### Placing 2 types of characters on the surfaces previously detected;
-### Characters:
-#### Alien - (is haunted by the Gardian if it is in his detection zone)
+### Characters (can be selected with UI buttons at the top screen):
+#### Alien - (is haunted by the Gardian if it's in its detection zone)
 #### Guardian - (haunts the Aliens within its detection zone) 
 ### Sounds: spawning, shooting, dying.
 
