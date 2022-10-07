@@ -14,6 +14,8 @@ public class TapeToPlaceObject : MonoBehaviour
 
     [SerializeField]
     private UIController uIController;
+    
+    private AudioSource audioSource;
 
     private GameObject spawnedObject;
     private ARRaycastManager aRRaycastManager;
@@ -25,7 +27,8 @@ public class TapeToPlaceObject : MonoBehaviour
 
     void Awake()
     {
-        aRRaycastManager = GetComponent<ARRaycastManager>();   
+        aRRaycastManager = GetComponent<ARRaycastManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -43,6 +46,8 @@ public class TapeToPlaceObject : MonoBehaviour
             var hitPose = hits[0].pose;
 
             int entityIndex = uIController.activeEntityIndex;
+
+            audioSource.Play();
 
             Instantiate(gameObjectsToInstantiate[entityIndex], hitPose.position, hitPose.rotation);
         }
