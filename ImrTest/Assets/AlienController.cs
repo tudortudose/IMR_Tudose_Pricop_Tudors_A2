@@ -7,6 +7,8 @@ public class AlienController : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
 
+    public bool dying;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -15,6 +17,7 @@ public class AlienController : MonoBehaviour
 
     public void Die()
     {
+        dying = true;
         animator.SetTrigger("dead");
     }
 

@@ -42,11 +42,14 @@ public class GirlController : MonoBehaviour
         target = null;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "alien")
+        if(other.gameObject.tag == "alien" && !target && !lastTarget)
         {
-            target = other.gameObject;
+            if (!other.GetComponent<AlienController>().dying)
+            {
+                target = other.gameObject;
+            }
         }
     }
 
@@ -54,5 +57,6 @@ public class GirlController : MonoBehaviour
     {
         lastTarget.GetComponent<AlienController>().Die();
         audioSource.Play();
+        lastTarget = null;
     }
 }
