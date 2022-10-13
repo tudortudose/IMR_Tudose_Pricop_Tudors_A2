@@ -7,6 +7,9 @@ TagManager:
   - Projectile
   - Strike
   - Fireworks
+  - Projectile2
+  - Gun1
+  - Gun2
   layers:
   - Default
   - TransparentFX
