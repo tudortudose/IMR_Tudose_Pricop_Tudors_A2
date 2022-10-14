@@ -8,23 +8,23 @@ public class Target : MonoBehaviour
     public HitEvent OnHit = new HitEvent();
 
     private ParticleSystem particleSys;
+    private AudioSource audioSource;
 
     private Transform thrower1 = null;
     private Transform thrower2 = null; 
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         particleSys = gameObject.GetComponentInChildren<ParticleSystem>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Tag: " + collision.gameObject.tag);
-        Debug.Log("Has gun? " + GameObject.FindGameObjectWithTag("Gun1"));
-
         thrower1 = GameObject.FindGameObjectWithTag("Gun1").transform;
         thrower2 = GameObject.FindGameObjectWithTag("Gun2").transform;
 
+        audioSource.Play();
         if (collision.gameObject.CompareTag("Projectile"))
         {
             ComputeOutScore(collision.transform.position, false, thrower1);
@@ -35,7 +35,7 @@ public class Target : MonoBehaviour
         }
         else //for any other object there is a minimum score when colliding
         {
-            OnHit.Invoke(5);
+            OnHit.Invoke(50);
         }
     }
 
@@ -44,13 +44,11 @@ public class Target : MonoBehaviour
         float distanceFromCenter = Vector3.Distance(transform.position, hitPosition);
         int score = 0;
 
-        Debug.Log("Score: ");
-        Debug.Log(score);
-
         if(distanceFromCenter < 0.25f)
         {
             score = 100;
             particleSys.Play();
+            audioSource.Play();
         }
         else if(distanceFromCenter < 0.5f)
         {
@@ -72,7 +70,6 @@ public class Target : MonoBehaviour
 
         if(gunPosition != null)
         {
-            Debug.Log("Distance: " + (Vector3.Distance(gunPosition.position, hitPosition)));
             score *= (int) (Vector3.Distance(gunPosition.position, hitPosition) * 10);
         }
 
