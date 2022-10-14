@@ -15,28 +15,23 @@ public class ScoreKeeper : MonoBehaviour
     [SerializeField]
     private TextMesh textMesh;
 
-    private static readonly string TOTAL_SCORE = "Total Score: ";
-    private static readonly string Best_SCORE = "Best Score: ";
+    private static readonly string TOTAL_SCORE = "Total Score\n";
+    private static readonly string BEST_SCORE = "Best Score\n";
 
     void Awake()
     {
         bestScore = PlayerPrefs.GetInt("bestScore");
         totalScore = 0;
         totalScoreText.text = TOTAL_SCORE + totalScore;
-        bestScoreText.text = TOTAL_SCORE + bestScore;
+        bestScoreText.text = BEST_SCORE + bestScore;
     }
 
     public void ShowScore(int score)
     {
         textMesh.text = score.ToString();
         UpdateTotalScore(score);
-        Invoke("CloseScore", 1f);
     }
 
-    private void CloseScore()
-    {
-        textMesh.text = "";
-    }
 
     private void UpdateTotalScore(int score)
     {
@@ -47,6 +42,6 @@ public class ScoreKeeper : MonoBehaviour
             PlayerPrefs.SetInt("bestScore", bestScore);
         }
         totalScoreText.text = TOTAL_SCORE + totalScore;
-        bestScoreText.text = TOTAL_SCORE + bestScore;
+        bestScoreText.text = BEST_SCORE + bestScore;
     }
 }

@@ -12,8 +12,11 @@ public class Weapon : MonoBehaviour
     public GameObject projectile = null;
     public float recoil = 1.0f;
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         interactable = GetComponent<XRGrabInteractable>();
         rb = GetComponent<Rigidbody>();
     }
@@ -30,6 +33,7 @@ public class Weapon : MonoBehaviour
 
     private void Fire(XRBaseInteractor interactor)
     {
+        audioSource.Play();
         CreateProjectile();
         ApplyRecoil();
     }
