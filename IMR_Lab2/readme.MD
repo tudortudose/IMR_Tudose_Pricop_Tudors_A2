@@ -10,7 +10,7 @@
 ### Sounds: shooting, target hit;
 ### Particle system: activated when the target is hit is the middle(maximum score);
 
-## Link for Youtube Video: coming soon
+## Link for Youtube Video: https://www.youtube.com/watch?v=dZmK9mG3qkk
 
 # Contributors:
 
