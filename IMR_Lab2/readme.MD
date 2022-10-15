@@ -14,5 +14,5 @@
 
 # Contributors:
 
-## Pricop Tudor-Constantin 3A2
-## Tudose Tudor-Cristian 3A2
+## Pricop Tudor-Constantin 3A2 (GROUP 4)
+## Tudose Tudor-Cristian 3A2 (GROUP 4)
