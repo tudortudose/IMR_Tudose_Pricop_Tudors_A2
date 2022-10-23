@@ -17,4 +17,11 @@ public class HandAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            animator.SetBool("Fist-wolverine", !animator.GetBool("Fist-wolverine"));
+        }
+    }
 }
