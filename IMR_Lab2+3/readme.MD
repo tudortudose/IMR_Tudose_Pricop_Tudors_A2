@@ -5,12 +5,14 @@
 ### Hand modeling & texturing (in Blender)
 
 ### Animations (in Unity):
-#### Fist  Animation (+claws)
-#### Magic Ball Holding
+#### Fist  Animation (+claws - left hand)
+#### Magic Ball Holding (+nails - right hand)
 
 ### Extra:
 #### Magic Ball/Orb realized with VFX Graph
 #### Sounds: claws, fire ambiance
+
+## Link for Youtube video: https://www.youtube.com/watch?v=jvjC_TT4rEw
 
 # Contributors:
 
