@@ -1,3 +1,24 @@
+# Lab 3 
+
+## Modeling & Animations:
+
+### Hand modeling & texturing (in Blender)
+
+### Animations (in Unity):
+#### Fist  Animation (+claws)
+#### Magic Ball Holding
+
+### Extra:
+#### Magic Ball/Orb realized with VFX Graph
+#### Sounds: claws, fire ambiance
+
+# Contributors:
+
+## Pricop Tudor-Constantin 3A2 (GROUP 4)
+## Tudose Tudor-Cristian 3A2 (GROUP 4)
+
+
+
 # Lab 2 
 
 ## VR Project having the following features:
